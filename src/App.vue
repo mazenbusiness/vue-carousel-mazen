@@ -13,13 +13,12 @@ export default {
   data() {
     return {
       fetchedCardsData: [
-        { linkText: "show more", imageURL: "https://png.pngtree.com/background/20230519/original/pngtree-dark-purple-flowers-at-night-wallpaper-on-mobile-picture-image_2650266.jpg" },
-        { linkText: "show more", imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTENLPPZgeUYWwD4wKfjT2rdN8tf1kw2zT4dQ&s" },
-        { linkText: "show more", imageURL: "https://wallpapers.com/images/featured/purple-sunset-4vdctecz52uxuo4v.jpg" },
-        { linkText: "show more", imageURL: "https://media.istockphoto.com/id/1405835459/photo/blue-and-pink-colorful-clouds-of-smoke-and-shiny-glitter-powder-particles-bursts-background.jpg?s=612x612&w=0&k=20&c=Ga8d-z9yHCu3yObFD1nEM6yDECsVH45vUe456324NhA=" },
-        { linkText: "show more", imageURL: "https://www.freevector.com/uploads/vector/preview/9500/FreeVector-Purple-Waves-Dots-Background.jpg" },
-        { linkText: "show more", imageURL: "https://wallpapers.com/images/featured/black-and-purple-background-ncacwppi5dvfsax4.jpg" },
-        { linkText: "show more", imageURL: "https://wallpapers.com/images/featured/black-and-purple-background-ncacwppi5dvfsax4.jpg" },
+        { linkText: "show more", linkURL: "when-clicked-go-to-this-URL", imageURL: "https://png.pngtree.com/background/20230519/original/pngtree-dark-purple-flowers-at-night-wallpaper-on-mobile-picture-image_2650266.jpg" },
+        { linkText: "show more", linkURL: "when-clicked-go-to-this-URL", imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTENLPPZgeUYWwD4wKfjT2rdN8tf1kw2zT4dQ&s" },
+        { linkText: "show more", linkURL: "when-clicked-go-to-this-URL", imageURL: "https://wallpapers.com/images/featured/purple-sunset-4vdctecz52uxuo4v.jpg" },
+        { linkText: "show more", linkURL: "when-clicked-go-to-this-URL", imageURL: "https://media.istockphoto.com/id/1405835459/photo/blue-and-pink-colorful-clouds-of-smoke-and-shiny-glitter-powder-particles-bursts-background.jpg?s=612x612&w=0&k=20&c=Ga8d-z9yHCu3yObFD1nEM6yDECsVH45vUe456324NhA=" },
+        { linkText: "show more", linkURL: "when-clicked-go-to-this-URL", imageURL: "https://www.freevector.com/uploads/vector/preview/9500/FreeVector-Purple-Waves-Dots-Background.jpg" },
+        { linkText: "show more", linkURL: "when-clicked-go-to-this-URL", imageURL: "https://wallpapers.com/images/featured/black-and-purple-background-ncacwppi5dvfsax4.jpg" },
       ],
     };
   },

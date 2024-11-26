@@ -2,7 +2,7 @@
 
   <div class="container">
     <div v-hammer:pan.horizontal="swipeHandler" class="carousel-container" v-bind:style="{
-          width: cardsData.length > 6 ? ((2* 3.1416 * 256) /  cardsData.length ) - ((cardsData.length  -1) * 0.5) + 'px' : 250 + 'px' ,
+          width: measureWidth + 'px' ,
         }"> 
       <div
         class="carousel-3D"
@@ -18,19 +18,18 @@
           v-for="(card, index) in cardsData"
           :key="index"
           :linkText="card.linkText"
+          :linkURL="card.linkURL"
           :imageURL="card.imageURL"
           :rotationDegrees="(index * 360) / cardsData.length"
-          :cardWidth = "cardsData.length > 6 ? ((2* 3.1416 * 256) /  cardsData.length ) - ((cardsData.length  -1) * 0.5) : 250"
+          :cardWidth = "measureWidth"
         />
       </div>
     </div>
     <div class="carousel-buttons">
-      <button class="carousel-btn" v-on:click="rotate('prev')">
-        &#129028;
-      </button>
-      <button class="carousel-btn" v-on:click="rotate('next')">
-        &#129030;
-      </button>
+      <button class="carousel-btn" v-if='isArabic' v-on:click="rotate('prev')">&#129030;</button>
+      <button class="carousel-btn"  v-else v-on:click="rotate('prev')">&#129028;</button>
+      <button class="carousel-btn" v-if='isArabic' v-on:click="rotate('next')">&#129028;</button>
+      <button class="carousel-btn" v-else v-on:click="rotate('next')">&#129030;</button>
     </div>
   </div>
 
@@ -49,13 +48,26 @@ export default {
   },
   data() {
     return {
+      // for rotation the carousel when swipe or clicking arrows by this degrees
       currentDegree: 0,
+      // when swiping rotation must happens immediately (0sec). when clicking arrows (1sec)
       rotationSpeed: 1,
     };
   },
+  computed: {
+      // for calculate carousel and card width especially when we have more than 6 cards (less or equal 6 it is 250px)
+      //  2* 3.1416 * 256 the circle length --- 0.5 is a little gap
+    measureWidth() {
+      return this.cardsData.length > 6 ? ((2* 3.1416 * 256) /  this.cardsData.length ) - ((this.cardsData.length  -1) * 0.5) : 250
+    },
+    isArabic() {
+      return  document.querySelector("HTML").getAttribute("dir") === "rtl";
+    },
+  },
   methods: {
+    // rotation method when clicking on arrows based on cards number
     rotate: function (direction) {
-      if (direction === "prev") {
+      if ((direction === "prev" && !this.isArabic ) || ( direction === "next" && this.isArabic ) )  {
         this.currentDegree = this.currentDegree + 360 / this.cardsData.length;
         this.rotationSpeed = 1;
         
@@ -64,6 +76,8 @@ export default {
         this.rotationSpeed = 1;
       }
     },
+    // rotation method when swiping based on swiping direction (which we get from the Hammer library)
+    // when we move the mouse by 90px we rotate the carousel 1 degree
     swipeHandler (ev) {
       if(ev.type === "panright"){
         this.currentDegree = this.currentDegree + ev.distance/90;

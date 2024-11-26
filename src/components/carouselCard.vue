@@ -2,7 +2,7 @@
   <div class="slide" v-bind:style="{ transform: 'rotateY(' + rotationDegrees  + 'deg) translateZ(250px)', width: cardWidth + 'px' }">
     <div class="card-content">
       <img :src="imageURL" alt="" />
-      <a href="" class="text">{{linkText}}</a>
+      <a :href="linkURL" class="text">{{linkText}}</a>
     </div>
   </div>
 </template>
@@ -13,6 +13,7 @@ export default {
   props: {
     linkText: String,
     imageURL: String,
+    linkURL: String,
     rotationDegrees: Number,
     cardWidth: Number,
   },
