@@ -1,7 +1,9 @@
 <template>
 
   <div class="container">
-    <div v-hammer:pan.horizontal="swipeHandler" class="carousel-container">
+    <div v-hammer:pan.horizontal="swipeHandler" class="carousel-container" v-bind:style="{
+          width: cardsData.length > 6 ? ((2* 3.1416 * 256) /  cardsData.length ) - ((cardsData.length  -1) * 0.5) + 'px' : 250 + 'px' ,
+        }"> 
       <div
         class="carousel-3D"
         v-bind:style="{
@@ -18,6 +20,7 @@
           :linkText="card.linkText"
           :imageURL="card.imageURL"
           :rotationDegrees="(index * 360) / cardsData.length"
+          :cardWidth = "cardsData.length > 6 ? ((2* 3.1416 * 256) /  cardsData.length ) - ((cardsData.length  -1) * 0.5) : 250"
         />
       </div>
     </div>

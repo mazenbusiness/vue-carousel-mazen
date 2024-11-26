@@ -1,5 +1,5 @@
 <template>
-  <div class="slide" v-bind:style="{ transform: 'rotateY(' + rotationDegrees  + 'deg) translateZ(250px)' }">
+  <div class="slide" v-bind:style="{ transform: 'rotateY(' + rotationDegrees  + 'deg) translateZ(250px)', width: cardWidth + 'px' }">
     <div class="card-content">
       <img :src="imageURL" alt="" />
       <a href="" class="text">{{linkText}}</a>
@@ -14,6 +14,7 @@ export default {
     linkText: String,
     imageURL: String,
     rotationDegrees: Number,
+    cardWidth: Number,
   },
 };
 </script>

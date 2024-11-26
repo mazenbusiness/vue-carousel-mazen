@@ -19,6 +19,7 @@ export default {
         { linkText: "show more", imageURL: "https://media.istockphoto.com/id/1405835459/photo/blue-and-pink-colorful-clouds-of-smoke-and-shiny-glitter-powder-particles-bursts-background.jpg?s=612x612&w=0&k=20&c=Ga8d-z9yHCu3yObFD1nEM6yDECsVH45vUe456324NhA=" },
         { linkText: "show more", imageURL: "https://www.freevector.com/uploads/vector/preview/9500/FreeVector-Purple-Waves-Dots-Background.jpg" },
         { linkText: "show more", imageURL: "https://wallpapers.com/images/featured/black-and-purple-background-ncacwppi5dvfsax4.jpg" },
+        { linkText: "show more", imageURL: "https://wallpapers.com/images/featured/black-and-purple-background-ncacwppi5dvfsax4.jpg" },
       ],
     };
   },
