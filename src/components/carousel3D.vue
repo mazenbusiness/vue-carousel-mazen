@@ -1,9 +1,12 @@
 <template>
-
   <div class="container">
-    <div v-hammer:pan.horizontal="swipeHandler" class="carousel-container" v-bind:style="{
-          width: measureWidth + 'px' ,
-        }"> 
+    <div
+      v-hammer:pan.horizontal="swipeHandler"
+      class="carousel-container"
+      v-bind:style="{
+        width: measureWidth + 'px',
+      }"
+    >
       <div
         class="carousel-3D"
         v-bind:style="{
@@ -21,18 +24,81 @@
           :linkURL="card.linkURL"
           :imageURL="card.imageURL"
           :rotationDegrees="(index * 360) / cardsData.length"
-          :cardWidth = "measureWidth"
+          :cardWidth="measureWidth"
         />
       </div>
     </div>
     <div class="carousel-buttons">
-      <button class="carousel-btn" v-if='isArabic' v-on:click="rotate('prev')">&#129030;</button>
-      <button class="carousel-btn"  v-else v-on:click="rotate('prev')">&#129028;</button>
-      <button class="carousel-btn" v-if='isArabic' v-on:click="rotate('next')">&#129028;</button>
-      <button class="carousel-btn" v-else v-on:click="rotate('next')">&#129030;</button>
+      <button class="carousel-btn" v-if="isArabic" v-on:click="rotate('prev')">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 12H20M20 12L14 6M20 12L14 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button class="carousel-btn" v-else v-on:click="rotate('prev')">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 12H4M4 12L10 18M4 12L10 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button class="carousel-btn" v-if="isArabic" v-on:click="rotate('next')">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 12H4M4 12L10 18M4 12L10 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button class="carousel-btn" v-else v-on:click="rotate('next')">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 12H20M20 12L14 6M20 12L14 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -55,22 +121,27 @@ export default {
     };
   },
   computed: {
-      // for calculate carousel and card width especially when we have more than 6 cards (less or equal 6 it is 250px)
-      //  2* 3.1416 * 256 the circle length --- 0.5 is a little gap
+    // for calculate carousel and card width especially when we have more than 6 cards (less or equal 6 it is 250px)
+    //  2* 3.1416 * 256 the circle length --- 0.5 is a little gap
     measureWidth() {
-      return this.cardsData.length > 6 ? ((2* 3.1416 * 256) /  this.cardsData.length ) - ((this.cardsData.length  -1) * 0.5) : 250
+      return this.cardsData.length > 6
+        ? (2 * 3.1416 * 256) / this.cardsData.length -
+            (this.cardsData.length - 1) * 0.5
+        : 250;
     },
     isArabic() {
-      return  document.querySelector("HTML").getAttribute("dir") === "rtl";
+      return document.querySelector("HTML").getAttribute("dir") === "rtl";
     },
   },
   methods: {
     // rotation method when clicking on arrows based on cards number
     rotate: function (direction) {
-      if ((direction === "prev" && !this.isArabic ) || ( direction === "next" && this.isArabic ) )  {
+      if (
+        (direction === "prev" && !this.isArabic) ||
+        (direction === "next" && this.isArabic)
+      ) {
         this.currentDegree = this.currentDegree + 360 / this.cardsData.length;
         this.rotationSpeed = 1;
-        
       } else {
         this.currentDegree = this.currentDegree - 360 / this.cardsData.length;
         this.rotationSpeed = 1;
@@ -78,20 +149,17 @@ export default {
     },
     // rotation method when swiping based on swiping direction (which we get from the Hammer library)
     // when we move the mouse by 90px we rotate the carousel 1 degree
-    swipeHandler (ev) {
-      if(ev.type === "panright"){
-        this.currentDegree = this.currentDegree + ev.distance/90;
+    swipeHandler(ev) {
+      if (ev.type === "panright") {
+        this.currentDegree = this.currentDegree + ev.distance / 90;
         this.rotationSpeed = 0;
-        }
-        if(ev.type === "panleft")
-        this.currentDegree = this.currentDegree - ev.distance/90;
-        this.rotationSpeed = 0;
-        }
-
+      }
+      if (ev.type === "panleft")
+        this.currentDegree = this.currentDegree - ev.distance / 90;
+      this.rotationSpeed = 0;
+    },
   },
 };
-
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
