@@ -167,6 +167,7 @@ export default {
 .container {
   position: relative;
   padding-block: 90px 150px;
+  overflow-x: clip;
 }
 
 .carousel-container {
