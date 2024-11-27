@@ -37,6 +37,7 @@ export default {
   --slider-width: 250px;
 }
 
+html,
 body,
 h1,
 h2,
@@ -70,6 +71,10 @@ button {
   background-color: #fff;
 }
 
+html, body{
+  height: 100%;
+}
+
 body {
   font-family: "poppins", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
@@ -77,8 +82,6 @@ body {
   line-height: normal;
   font-style: normal;
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
   background: #330e66;
   background: linear-gradient(#330e66, #ebdcff, #330e66);
   background-repeat: no-repeat;

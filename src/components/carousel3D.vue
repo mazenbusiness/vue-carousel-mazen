@@ -166,10 +166,11 @@ export default {
 <style scoped>
 .container {
   position: relative;
+  padding-block: 90px 150px;
 }
 
 .carousel-container {
-  margin: 90px auto 150px;
+  margin: 0 auto;
   width: var(--slider-width);
   height: 200px;
   position: relative;
